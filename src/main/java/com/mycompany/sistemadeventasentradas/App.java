@@ -13,18 +13,47 @@ import java.io.IOException;
  */
 public class App extends Application {
 
-    private static Scene scene;
+   /* @Override
+    public void start(Stage primaryStage) throws IOException {
+        Crear el controlador de lógica compartido entre todas las vistas
+       AuditorioController controller = new AuditorioController();
 
-    @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
+        // Cargar el FXML principal
+        FXMLLoader loader = new FXMLLoader(
+            getClass().getResource("com/mycompany/FXML/Login.fxml")
+        );
+
+        // El controlador de vista necesita el controlador de lógica
+       MainViewController viewController = new MainViewController(controller);
+        loader.setController(viewController);
+
+        Scene scene = new Scene(loader.load(), 1100, 720);
+        scene.getStylesheets().add(
+           getClass().getResource("/com/auditorio/css/styles.css").toExternalForm()
+        );
+
+        primaryStage.setTitle("🎭 Sistema de Venta de Entradas — Auditorio");
+        primaryStage.setScene(scene);
+        primaryStage.setMinWidth(900);
+        primaryStage.setMinHeight(620);
+
+        // Guardar datos al cerrar
+       primaryStage.setOnCloseRequest(e -> controller.guardarTodo());
+
+      primaryStage.show();
+       
+    }*/
+
+    
+@Override
+    public void start(Stage stage) throws Exception {
+      Parent root = FXMLLoader.load(getClass().getResource("/com/mycompany/sistemadeventasentradas/FXML/Login.fxml"));
+       stage.setTitle("Sistema de Venta de Entradas — Auditorio");
+        stage.setScene(new Scene(root, 600, 400));
         stage.show();
+    
     }
-
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
-    }
+    
 
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
@@ -32,7 +61,6 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
-
 }
