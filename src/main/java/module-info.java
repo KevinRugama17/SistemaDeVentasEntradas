@@ -6,5 +6,6 @@ module com.mycompany.sistemadeventasentradas {
     opens com.mycompany.sistemadeventasentradas to javafx.fxml;
     opens com.mycompany.sistemadeventasentradas.Controller to javafx.fxml;
     opens com.mycompany.sistemadeventasentradas.Model to javafx.fxml;
+    opens com.mycompany.sistemadeventasentradas.Exception to javafx.fxml;
     exports com.mycompany.sistemadeventasentradas;
 }
