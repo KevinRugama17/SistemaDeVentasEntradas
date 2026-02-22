@@ -4,5 +4,14 @@
     -fx-background-color:linear-gradient(to bottom right,#141E30,#243B55 );
     
 }
-
+.botones{
+    
+     -fx-background-color: #5b8dee;
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 7 14 7 14;
+}
 
