@@ -51,7 +51,6 @@ public class VentanaCompraController implements Initializable {
         actualizarPrecio();
     }
 
-
     @FXML
     private void onTipoChanged() {
         actualizarPrecio();
