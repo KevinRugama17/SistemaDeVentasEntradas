@@ -8,12 +8,7 @@ public class GestorCliente {
     
     public GestorCliente() {
         listaUsuarios = new ArrayList<>();
-        
         listaUsuarios.add(new Cliente("admin","2468"));
-        listaUsuarios.add(new Cliente("luis", "abcd"));
-        listaUsuarios.add(new Cliente("Kevin", "aeio"));
-        listaUsuarios.add(new Cliente("Aaron", "1357"));
-        listaUsuarios.add(new Cliente("Sofia", "1234"));
     }
     
     public void agregarUsuarios(Cliente cliente){
@@ -27,5 +22,23 @@ public class GestorCliente {
             }
         }
         return false;
+    }
+    
+    public boolean existeUsuario(String id){
+        for(Cliente c: listaUsuarios){
+            if(c.getID().equals(id))
+                return true;
+        }
+        return false;
+    }
+    
+    public boolean registrarCliente(String id, String password){
+        for(Cliente c: listaUsuarios){
+            if(c.getID().equals(id)){
+                return false;
+            }
+        }
+        listaUsuarios.add(new Cliente(id, password));
+        return true;
     }
 }
