@@ -1,5 +1,5 @@
 
-.Login-bg {
+.fondo {
     
     -fx-background-color:linear-gradient(to bottom right,#141E30,#243B55 );
     
@@ -14,4 +14,3 @@
     -fx-cursor: hand;
     -fx-padding: 7 14 7 14;
 }
-

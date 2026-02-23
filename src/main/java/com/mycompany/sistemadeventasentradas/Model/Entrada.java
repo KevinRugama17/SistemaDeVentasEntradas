@@ -28,7 +28,7 @@ public abstract class Entrada implements IVendible{
     
     public abstract String getTipoEntrada ();
     
-    //Getters
+
     public String getNombreCliente() {
         return nombreCliente;
     }

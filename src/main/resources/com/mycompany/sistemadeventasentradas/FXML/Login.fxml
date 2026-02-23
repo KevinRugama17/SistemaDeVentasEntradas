@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.TextFlow?>
 
-<AnchorPane id="AnchorPane" prefHeight="214.0" prefWidth="440.0" styleClass="Login-bg" stylesheets="@../CSS/StyleBG.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.sistemadeventasentradas.Controller.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="214.0" prefWidth="440.0" styleClass="fondo" stylesheets="@../CSS/StyleBG.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.sistemadeventasentradas.Controller.LoginController">
    <children>
       <Label layoutX="197.0" layoutY="42.0" text="Ingresar ID:" textFill="WHITE" />
       <Label layoutX="197.0" layoutY="86.0" text="Contraseña: " textFill="WHITE" />
