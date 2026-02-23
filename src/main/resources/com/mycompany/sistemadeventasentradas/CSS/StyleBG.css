@@ -22,11 +22,11 @@
 .botones{
      -fx-background-color: #5b8dee;
     -fx-text-fill: white;
-    -fx-font-size: 13px;
+    -fx-font-size: 11px;
     -fx-font-weight: bold;
     -fx-background-radius: 6;
     -fx-cursor: hand;
-    -fx-padding: 7 14 7 14;
+    -fx-padding: 5 11 5 11;
 }
 
 .botones:hover {
