@@ -1,16 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.sistemadeventasentradas.Model;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author kevin
- */
 public class Evento {
     
     public static final int FILAS    = 10;
@@ -47,19 +39,16 @@ public class Evento {
         asientos         = new boolean[FILAS][COLUMNAS];
         entradasVendidas = new ArrayList<>();
     }
-
     
     public void agregarVenta(Entrada entrada) 
     { entradasVendidas.add(entrada); }
-
-   
+    
     public double getTotalRecaudado() {
         double total = 0;
         for (Entrada entrada : entradasVendidas) total += entrada.calcularPrecio();
         return total;
     }
     
-
     public String getNombre() {
         return nombre;
     }
@@ -96,10 +85,9 @@ public class Evento {
         return entradasVendidas;
     }
     
-    
         @Override
     public String toString() {
-        return nombre + "  |  " + fecha + "  |  ₡" + String.format("%.2f", precioBase);
+        return nombre + "  |  " + fecha + "  |  " + String.format("%.2f", precioBase);
     }
     
     

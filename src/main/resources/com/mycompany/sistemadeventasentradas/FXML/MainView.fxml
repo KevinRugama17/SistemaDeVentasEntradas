@@ -1,44 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/17"
-            xmlns:fx="http://javafx.com/fxml/1"
-
-            styleClass="fondo"
-            stylesheets="@../CSS/StyleBG.css"
-            prefWidth="1100" prefHeight="720">
-
-    <!-- ══════════════  HEADER  ══════════════ -->
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" styleClass="fondo" stylesheets="@../CSS/MainView.css" prefWidth="1100" prefHeight="720">
     <top>
         <HBox styleClass="header-bar" alignment="CENTER_LEFT" spacing="16"
               style="-fx-background-color: rgba(0,0,0,0.35); -fx-padding: 10 20 10 20; -fx-border-color: rgba(91,141,238,0.3); -fx-border-width: 0 0 1 0;">
-
             <ImageView fitHeight="42" fitWidth="52" pickOnBounds="true" preserveRatio="true">
                 <image><Image url="@LogoUCR2.jpg"/></image>
             </ImageView>
-
             <VBox spacing="1">
                 <Label text="Sistema de Ventas — Auditorio UCR"
                        style="-fx-text-fill: white; -fx-font-size: 15px; -fx-font-weight: bold;"/>
                 <Label text="Sede Guanacaste"
                        style="-fx-text-fill: rgba(255,255,255,0.55); -fx-font-size: 11px;"/>
             </VBox>
-
             <Region HBox.hgrow="ALWAYS"/>
-
-            <!-- Selector de evento global -->
             <Label text="Evento activo:" style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 12px;"/>
             <ComboBox fx:id="comboEventoGlobal" prefWidth="220"
                       style="-fx-background-color: rgba(255,255,255,0.08); -fx-text-fill: white; -fx-border-color: rgba(91,141,238,0.5); -fx-border-radius: 5; -fx-background-radius: 5;"/>
             <Button text="Cargar" onAction="#onCargarEvento" styleClass="botones"
                     stylesheets="@../CSS/StyleBG.css"/>
-
-            <!-- Info del evento activo -->
             <VBox spacing="2" style="-fx-padding: 0 0 0 12;">
                 <Label fx:id="lblEventoNombre" text="—"
                        style="-fx-text-fill: #5b8dee; -fx-font-weight: bold; -fx-font-size: 13px;"/>
@@ -49,27 +34,19 @@
                            style="-fx-text-fill: #34c759; -fx-font-size: 11px; -fx-font-weight: bold;"/>
                 </HBox>
             </VBox>
-
-            <!-- Cerrar sesión -->
             <Button text="⏻  Cerrar Sesión" onAction="#onCerrarSesion"
                     style="-fx-background-color: rgba(192,57,43,0.75); -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 11px; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 6 12 6 12;"
                     stylesheets="@../CSS/StyleBG.css"/>
         </HBox>
     </top>
-
-    <!-- ══════════════  CENTRO — TabPane  ══════════════ -->
     <center>
         <TabPane fx:id="tabPane" tabClosingPolicy="UNAVAILABLE"
                  style="-fx-background-color: transparent;"
                  stylesheets="@../CSS/StyleBG.css">
-
-            <!-- ─────────────  TAB 1: MAPA DE ASIENTOS  ───────────── -->
             <Tab text=" Mapa de Asientos" fx:id="tabMapa">
                 <ScrollPane fitToWidth="true" fitToHeight="true"
                             style="-fx-background-color: transparent; -fx-background: transparent;">
                     <VBox spacing="16" style="-fx-padding: 20;">
-
-                        <!-- Leyenda -->
                         <HBox spacing="20" alignment="CENTER_LEFT">
                             <Label text="Leyenda:" style="-fx-text-fill: rgba(255,255,255,0.7); -fx-font-size: 12px;"/>
                             <HBox spacing="6" alignment="CENTER">
@@ -91,10 +68,7 @@
                             <Label fx:id="lblRecaudado"
                                    style="-fx-text-fill: #34c759; -fx-font-size: 13px; -fx-font-weight: bold;"/>
                         </HBox>
-
-                        <!-- Grid del mapa -->
                         <HBox alignment="CENTER">
-                            <!-- Escenario -->
                             <VBox alignment="CENTER" spacing="10">
                                 <Pane prefWidth="560" prefHeight="28"
                                       style="-fx-background-color: linear-gradient(to right, rgba(91,141,238,0.15), rgba(91,141,238,0.45), rgba(91,141,238,0.15)); -fx-background-radius: 6;">
@@ -104,28 +78,20 @@
                                 <GridPane fx:id="gridAsientos" hgap="5" vgap="5" alignment="CENTER"/>
                             </VBox>
                         </HBox>
-
-                        <!-- Status bar -->
                         <Label fx:id="lblStatus" text=""
                                style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 11px; -fx-padding: 4 10 4 10; -fx-background-color: rgba(0,0,0,0.2); -fx-background-radius: 4;"
                                maxWidth="Infinity"/>
                     </VBox>
                 </ScrollPane>
             </Tab>
-
-            <!-- ─────────────  TAB 2: ADMINISTRACIÓN (solo admin) ───────────── -->
             <Tab text="⚙  Administración" fx:id="tabAdmin">
                 <SplitPane dividerPositions="0.38"
                            style="-fx-background-color: transparent; -fx-padding: 16;">
-
-                    <!-- Panel izquierdo: gestión de eventos -->
                     <VBox spacing="12" style="-fx-padding: 0 8 0 0;">
                         <Label text="Gestión de Eventos" styleClass="label-highlight"
                                stylesheets="@../CSS/StyleBG.css"/>
-
                         <ListView fx:id="listEventos" prefHeight="280"
                                   style="-fx-background-color: rgba(255,255,255,0.06); -fx-border-color: rgba(91,141,238,0.3); -fx-border-radius: 5; -fx-background-radius: 5; -fx-text-fill: white;"/>
-
                         <HBox spacing="8">
                             <Button text="＋ Crear" onAction="#onCrearEvento"
                                     styleClass="botones" stylesheets="@../CSS/StyleBG.css"
@@ -137,9 +103,7 @@
                                     style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6; -fx-cursor: hand; -fx-padding: 5 11 5 11;"
                                     HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
                         </HBox>
-
                         <Separator style="-fx-background-color: rgba(255,255,255,0.1);"/>
-
                         <Label text="Herramientas" style="-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 12px;"/>
                         <HBox spacing="8">
                             <Button text=" Buscar Reserva" onAction="#onBuscarReserva"
@@ -150,8 +114,6 @@
                                     HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
                         </HBox>
                     </VBox>
-
-                    <!-- Panel derecho: reporte -->
                     <VBox spacing="10">
                         <HBox alignment="CENTER_LEFT" spacing="12">
                             <Label text="Reporte del Evento" styleClass="label-highlight"
@@ -160,15 +122,12 @@
                             <Button text=" Generar Reporte" onAction="#onGenerarReporte"
                                     styleClass="btn-success" stylesheets="@../CSS/StyleBG.css"/>
                         </HBox>
-
                         <TextArea fx:id="areaReporte" editable="false"
                                   style="-fx-font-family: 'Courier New'; -fx-font-size: 12px; -fx-background-color: rgba(0,0,0,0.3); -fx-text-fill: #c8d6e8; -fx-border-color: rgba(91,141,238,0.3); -fx-border-radius: 5; -fx-background-radius: 5; -fx-control-inner-background: rgba(0,0,0,0.3);"
                                   VBox.vgrow="ALWAYS"/>
                     </VBox>
                 </SplitPane>
             </Tab>
-
         </TabPane>
     </center>
-
 </BorderPane>

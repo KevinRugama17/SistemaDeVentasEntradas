@@ -1,0 +1,103 @@
+
+.asiento-libre{
+    -fx-background-color: #5b8dee;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+.asiento-ocupado{
+    -fx-background-color: #e05252;
+    -fx-text-fill: white;
+    -fx-cursor: default;
+}
+.asiento-disabled{
+    -fx-background-color: rgba(255,255,255,0.08);
+    -fx-text-fill: rgba(255,255,255,0.2);
+    -fx-cursor: default;
+}
+
+.label-columna{
+    -fx-textfill: rgba(255,255,255,0.5);
+    -fx-font-size: 11px;
+    -fx-alignment: center;
+}
+.label-fila{
+    -fx-text-fill: rgba(255,255,255,0.5);
+    -fx-font-size: 11px;
+    -fx-alignment: center;
+}
+.asiento-btn{
+    -fx-pref-width: 54;
+    -fx-pref-height: 48;
+    -fx-background-radius: 6;
+}
+
+/*1. Variables generales
+.root {-fx-font-family: "Segoe UI";}
+   2. Contenedores
+.fondo {-fx-background-color: #1e1e1e;}
+   3. Componentes base
+.button {-fx-background-radius: 6;}
+   4. Componentes específicos
+.asiento-libre { }
+.asiento-ocupado { }
+.asiento-disabled { }
+   5. Estados especiales
+.status-normal { }*/
+.fondo {
+    
+    -fx-background-color:linear-gradient(to bottom right,#141E30,#243B55 );
+   
+}
+.bordes-pane{
+    
+  
+    -fx-padding: 20px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.fondo-ventanas{
+ 
+    -fx-background-color: radial-gradient(center 50% 50%, radius 50%, #2a4d89, #141E30);
+
+}
+.botones{
+     -fx-background-color: #5b8dee;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 5 11 5 11;
+}
+
+.botones:hover {
+    -fx-background-color: #005a9e; 
+}
+
+.botones:pressed {
+    -fx-background-color: #004578;
+}
+
+.btn-success {
+    -fx-background-color: #34c759;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 7 14 7 14;
+}
+
+.btn-success:hover {
+    -fx-background-color: #28a046;
+}
+.label-highlight {
+    -fx-text-fill: #5b8dee;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+

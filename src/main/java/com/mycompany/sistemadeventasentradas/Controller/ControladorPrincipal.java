@@ -88,10 +88,7 @@ public class ControladorPrincipal {
     GestorPersistencia.guardarTicket(ticket, idReserva);
     return ticket;
 }
-
-
-    //  BÚSQUEDA
-
+//    Busqueda
     public Entrada buscarPorIdCliente(String id) {
         if (eventoActual == null) return null;
         return BusquedaLineal.buscarPorIdCliente(eventoActual.getEntradasVendidas(), id);
@@ -106,10 +103,7 @@ public class ControladorPrincipal {
         if (eventoActual == null) return new ArrayList<>();
         return BusquedaLineal.buscarTodasPorCliente(eventoActual.getEntradasVendidas(), id);
     }
-
-  
-    //  ADMINISTRACIÓN
-
+    // Administracion
     public void reiniciarSala() {
         if (eventoActual != null) eventoActual.reiniciarSala();
     }
@@ -130,21 +124,18 @@ public class ControladorPrincipal {
 
         List<Entrada> ventas = eventoActual.getEntradasVendidas();
         if (ventas.isEmpty()) {
-            sb.append("  Sin ventas registradas.\n");
+            sb.append(" Sin ventas registradas.\n");
         } else {
             sb.append("  Entradas vendidas (").append(ventas.size()).append("):\n\n");
             for (Entrada e : ventas) {
                 sb.append("  ▸ ").append(e).append("\n");
             }
         }
-        sb.append("\n  TOTAL RECAUDADO: ₡").append(String.format("%.2f", getTotalRecaudado())).append("\n");
+        sb.append("\n  TOTAL RECAUDADO: ").append(String.format("%.2f", getTotalRecaudado())).append("\n");
         sb.append("═══════════════════════════════════════\n");
         return sb.toString();
     }
-
-
-    //  PERSISTENCIA
- 
+    
     public void guardarTodo() {
         GestorPersistencia.guardarTodo(eventos);
     }
