@@ -6,7 +6,6 @@
 <?import javafx.geometry.*?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.mycompany.sistemadeventasentradas.Controller.VentanaEventoController"
       spacing="18" prefWidth="360"
       style="-fx-background-color: #1e1e2e; -fx-padding: 30;">
 
@@ -48,7 +47,7 @@
                style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
         <TextField fx:id="txtPrecio"                  
                    style="-fx-background-color: #313244;
-                          -fx-text-fill: #cdd6f4; m,mj                         
+                          -fx-text-fill: #cdd6f4;                        
                           -fx-border-color: #45475a;
                           -fx-border-radius: 6; -fx-background-radius: 6;
                           -fx-padding: 8;"/>
