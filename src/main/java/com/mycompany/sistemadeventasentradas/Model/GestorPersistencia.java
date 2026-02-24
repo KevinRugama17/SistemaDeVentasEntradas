@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.sistemadeventasentradas.Model;
 
 import java.io.BufferedReader;
@@ -19,10 +15,7 @@ public class GestorPersistencia {
     private static final String ARCHIVO_EVENTOS  = "eventos.txt";
     private static final String ARCHIVO_ASIENTOS = "asientos.txt";
     private static final String ARCHIVO_VENTAS   = "ventas.txt";
-
-   
     //  GUARDAR
-
     public static void guardarEventos(List<Evento> eventos) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(ARCHIVO_EVENTOS))) {
             for (Evento e : eventos) {
@@ -84,10 +77,7 @@ public class GestorPersistencia {
         guardarAsientos(eventos);
         guardarVentas(eventos);
     }
- 
-    
     //  CARGAR
-
     public static List<Evento> cargarEventos() {
         List<Evento> lista = new ArrayList<>();
         File f = new File(ARCHIVO_EVENTOS);
@@ -151,25 +141,20 @@ public class GestorPersistencia {
         }
     }
 
-private static Entrada fabricar(String tipo, String idR, String nom, String idC,
-                                 int fila, int col, double precio, String evento) {
+private static Entrada fabricar(String tipo, String idR, String nom, String idC, int fila, int col, double precio, String evento) {
     Entrada entrada;
-    
     switch (tipo) {
         case "VIP":
-           
             entrada = new EntradaVIP(nom, idC, idR, evento, fila, col, precio);
             break;
             
         case "Estudiante":
             entrada = new EntradaEstudiante(nom, idC, idR, evento, fila, col, precio);
             break;
-            
         default:
             entrada = new EntradaGeneral(nom, idC, idR, evento, fila, col, precio);
             break;
     }
-    
     return entrada;
  }
 }

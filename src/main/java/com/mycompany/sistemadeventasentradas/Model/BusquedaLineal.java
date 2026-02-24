@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.sistemadeventasentradas.Model;
 
 import java.util.ArrayList;
@@ -9,8 +5,6 @@ import java.util.List;
 
 
 public class BusquedaLineal {
- 
-
     
     public static Entrada buscarPorIdCliente(List<Entrada> lista, String idCliente) {
         for (Entrada e : lista) {
@@ -25,8 +19,7 @@ public class BusquedaLineal {
         }
         return null;
     }
-
-  
+    
     public static List<Entrada> buscarTodasPorCliente(List<Entrada> lista, String idCliente) {
         List<Entrada> resultado = new ArrayList<>();
         for (Entrada e : lista) {
