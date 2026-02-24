@@ -56,7 +56,29 @@ public class VentanaCompraController implements Initializable {
         actualizarPrecio();
     }
     private void actualizarPrecio() {
+        //supuestamente arreglado
     if (controller.getEventoActual() == null) return;
+    String tipo = comboTipo.getValue();
+    if (tipo == null) return; // ← protección necesaria
+    
+    double base = controller.getEventoActual().getPrecioBase();
+    double precio;
+    switch (tipo) {
+        case "VIP": 
+            precio = base * 1.50;
+            break;
+        case "Estudiante":
+            precio = base * 0.70;
+            break;
+        default:
+            precio = base;
+            break;
+    }
+    lblPrecioFinal.setText("₡" + String.format("%.2f", precio));
+   
+       //antes 
+        
+   /* if (controller.getEventoActual() == null) return;
     double base = controller.getEventoActual().getPrecioBase();
     String tipo = comboTipo.getValue();
     
@@ -72,7 +94,7 @@ public class VentanaCompraController implements Initializable {
             precio = base;
             break;
     }
-    lblPrecioFinal.setText("₡" + String.format("%.2f", precio));
+    lblPrecioFinal.setText("₡" + String.format("%.2f", precio));*/
 }
    
 
@@ -128,6 +150,8 @@ public class VentanaCompraController implements Initializable {
         alert.showAndWait();
     }
 
-    public boolean isCompraRealizada() { return compraRealizada; }
+    public boolean isCompraRealizada() { 
+        return compraRealizada;
+    }
 }
 
