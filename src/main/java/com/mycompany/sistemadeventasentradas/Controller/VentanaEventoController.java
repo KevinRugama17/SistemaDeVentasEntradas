@@ -63,8 +63,8 @@ public class VentanaEventoController implements Initializable {
             precio = Double.parseDouble(precioTexto);
             if (precio <= 0) throw new NumberFormatException("Debe ser mayor a 0");
         } catch (NumberFormatException e) {
-            mostrarError("Precio inválido",
-                "El precio debe ser un número válido mayor a 0.\n" +
+            mostrarError("Precio invalido",
+                "El precio debe ser un numero valido mayor a 0.\n" +
                 "Ejemplo: 15000 o 12500.50");
             return;
         }
