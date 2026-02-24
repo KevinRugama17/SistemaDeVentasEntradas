@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -14,34 +13,46 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="500.0" styleClass="fondo-ventanas" stylesheets="@../CSS/StyleBG.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.sistemadeventasentradas.Controller.VentanaCompraController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="500.0"
+            styleClass="fondo-ventanas" stylesheets="@../CSS/StyleBG.css"
+            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="70.0" layoutY="51.0" styleClass="label-highlight" stylesheets="@../CSS/StyleBG.css" text="Comprar entrada" textFill="WHITE" />
-      <Pane layoutX="70.0" layoutY="95.0" prefHeight="220.0" prefWidth="370.0" styleClass="bordes-pane" stylesheets="@../CSS/StyleBG.css">
+      <Label layoutX="70.0" layoutY="51.0" styleClass="label-highlight"
+             stylesheets="@../CSS/StyleBG.css" text="Comprar entrada" textFill="WHITE" />
+
+      <Pane layoutX="70.0" layoutY="95.0" prefHeight="220.0" prefWidth="370.0"
+            styleClass="bordes-pane" stylesheets="@../CSS/StyleBG.css">
          <children>
             <GridPane hgap="12" layoutX="27.0" layoutY="33.0" vgap="10">
                <children>
-                   
-                  <Label text="Asiento:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                  <Label fx:id="lblAsiento" text="—" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font></Label>
-        
-                  <Label text="Nombre del cliente:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                  <TextField fx:id="txtNombre" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  
-                  <Label text="ID del cliente:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-                  <TextField fx:id="txtIdCliente" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  
-                   <Label text="Tipo de entrada:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-                   <ComboBox fx:id="comboTipo" onAction="#onTipoChanged" prefWidth="200" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label text="Asiento:" textFill="WHITE"
+                         GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <Label fx:id="lblAsiento" text="—" textFill="WHITE"
+                         GridPane.columnIndex="1" GridPane.rowIndex="0">
+                     <font><Font name="System Bold" size="12.0" /></font>
+                  </Label>
 
-                 <Label text="Precio a pagar:" textFill="WHITE" GridPane.columnIndex="0" GridPane.rowIndex="4" />
-                 <Label fx:id="lblPrecioFinal" text="₡0.00" textFill="#34c759" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font></Label>
+                  <Label text="Nombre del cliente:" textFill="WHITE"
+                         GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <TextField fx:id="txtNombre" prefWidth="200"
+                             GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                  <Label text="ID del cliente:" textFill="WHITE"
+                         GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                  <TextField fx:id="txtIdCliente"
+                             GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                  <Label text="Tipo de entrada:" textFill="WHITE"
+                         GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                  <ComboBox fx:id="comboTipo" onAction="#onTipoChanged" prefWidth="200"
+                            GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                  <Label text="Precio a pagar:" textFill="WHITE"
+                         GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                  <Label fx:id="lblPrecioFinal" text="₡0.00" textFill="#34c759"
+                         GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font><Font name="System Bold Italic" size="12.0" /></font>
+                  </Label>
                </children>
                <columnConstraints>
                   <ColumnConstraints />
@@ -57,11 +68,19 @@
             </GridPane>
          </children>
       </Pane>
-      <HBox alignment="CENTER_RIGHT" layoutX="114.0" layoutY="344.0" prefHeight="34.0" prefWidth="281.0" spacing="12">
-        <Button fx:id="btnCancelar" onAction="#onCancelar" prefHeight="34.0" prefWidth="100.0" styleClass="botones" stylesheets="@../CSS/StyleBG.css" text="Cancelar" />
-        <Button fx:id="btnConfirmar" onAction="#onConfirmar" prefHeight="34.0" prefWidth="146.0" styleClass="btn-success" stylesheets="@../CSS/StyleBG.css" text="Confirmar Compra" />
-    </HBox>
-      <ImageView fitHeight="70.0" fitWidth="86.0" layoutX="354.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true">
+
+      <HBox alignment="CENTER_RIGHT" layoutX="114.0" layoutY="344.0"
+            prefHeight="34.0" prefWidth="281.0" spacing="12">
+         <Button fx:id="btnCancelar" onAction="#onCancelar"
+                 prefHeight="34.0" prefWidth="100.0"
+                 styleClass="botones" stylesheets="@../CSS/StyleBG.css" text="Cancelar" />
+         <Button fx:id="btnConfirmar" onAction="#onConfirmar"
+                 prefHeight="34.0" prefWidth="146.0"
+                 styleClass="btn-success" stylesheets="@../CSS/StyleBG.css" text="Confirmar Compra" />
+      </HBox>
+
+      <ImageView fitHeight="70.0" fitWidth="86.0" layoutX="354.0" layoutY="32.0"
+                 pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@LogoUCR2.jpg" />
          </image>

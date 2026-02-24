@@ -1,8 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 
+<AnchorPane prefHeight="280.0" prefWidth="420.0"
+            styleClass="fondo-ventanas"
+            stylesheets="@../CSS/StyleBG.css"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1">
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../CSS/StyleBG.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="com.mycompany.sistemadeventasentradas.Controller.VentanaEventoController">
-    
+    <VBox spacing="18" AnchorPane.topAnchor="24" AnchorPane.bottomAnchor="20"
+          AnchorPane.leftAnchor="30" AnchorPane.rightAnchor="30">
+
+        <!-- Título -->
+        <Label fx:id="lblTituloDialog" text="Evento"
+               styleClass="label-highlight" stylesheets="@../CSS/StyleBG.css"/>
+
+        <!-- Campos -->
+        <GridPane hgap="12" vgap="14">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="120"/>
+                <ColumnConstraints hgrow="ALWAYS"/>
+            </columnConstraints>
+
+            <Label text="Nombre:" textFill="WHITE" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtNombre" promptText="Ej: Concierto de Jazz"
+                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+            <Label text="Fecha:" textFill="WHITE" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtFecha" promptText="Ej: 2025-08-15"
+                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+            <Label text="Precio base (₡):" textFill="WHITE" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <TextField fx:id="txtPrecio" promptText="Ej: 15000"
+                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+
+        <Region VBox.vgrow="ALWAYS"/>
+
+        <!-- Botones -->
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <Button text="Cancelar" onAction="#onCancelar"
+                    styleClass="botones" stylesheets="@../CSS/StyleBG.css"/>
+            <Button text="Guardar" onAction="#onGuardar"
+                    styleClass="btn-success" stylesheets="@../CSS/StyleBG.css"/>
+        </HBox>
+
+    </VBox>
 </AnchorPane>
