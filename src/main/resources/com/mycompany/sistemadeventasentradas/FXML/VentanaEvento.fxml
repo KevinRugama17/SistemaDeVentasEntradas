@@ -5,43 +5,70 @@
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 
-<AnchorPane prefHeight="280.0" prefWidth="420.0"
-            styleClass="fondo-ventanas" stylesheets="@../CSS/StyleBG.css"
-            xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mycompany.sistemadeventasentradas.Controller.VentanaEventoController"
+      spacing="18" prefWidth="360"
+      style="-fx-background-color: #1e1e2e; -fx-padding: 30;">
+
     
-    <VBox spacing="18" AnchorPane.topAnchor="24" AnchorPane.bottomAnchor="20"
-          AnchorPane.leftAnchor="30" AnchorPane.rightAnchor="30"> 
-             
-        <Label fx:id="lblTituloDialog" text="Evento"
-               styleClass="label-highlight" stylesheets="@../CSS/StyleBG.css"/>
-      
-        <GridPane hgap="12" vgap="14">
-            <columnConstraints>
-                <ColumnConstraints prefWidth="120"/>
-                <ColumnConstraints hgrow="ALWAYS"/>
-            </columnConstraints>
+    <Label fx:id="lblTituloDialog" text="Crear Evento"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;
+                  -fx-text-fill: #cdd6f4;"/>
 
-            <Label text="Nombre:" styleClass="label-campo" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtNombre" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
-                       
+    <Separator style="-fx-background-color: #45475a;"/>
 
-            <Label text="Fecha:" styleClass="label-campo" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtFecha" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
-                       
-
-            <Label text="Precio base (₡):" styleClass="label-campo" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
-            <TextField fx:id="txtPrecio"  GridPane.rowIndex="2" GridPane.columnIndex="1"/>                      
-        </GridPane>
-
-        <Region VBox.vgrow="ALWAYS"/>
-
-     
-        <HBox spacing="10" alignment="CENTER_RIGHT">
-            <Button text="Cancelar" onAction="#onCancelar"
-                    styleClass="botones" stylesheets="@../CSS/StyleBG.css"/>
-            <Button text="Guardar" onAction="#onGuardar"
-                    styleClass="btn-success" stylesheets="@../CSS/StyleBG.css"/>
-        </HBox>
-
+   
+    <VBox spacing="5">
+        <Label text="Nombre del Evento"
+               style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
+        <TextField fx:id="txtNombre"
+                   style="-fx-background-color: #313244;
+                          -fx-text-fill: #cdd6f4;
+                          -fx-border-color: #45475a;
+                          -fx-border-radius: 6; -fx-background-radius: 6;
+                          -fx-padding: 8;"/>
     </VBox>
-</AnchorPane>
+
+    
+    <VBox spacing="5">
+        <Label text="Fecha"
+               style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
+        <TextField fx:id="txtFecha"
+                   
+                   style="-fx-background-color: #313244;
+                          -fx-text-fill: #cdd6f4;                         
+                          -fx-border-color: #45475a;
+                          -fx-border-radius: 6; -fx-background-radius: 6;
+                          -fx-padding: 8;"/>
+    </VBox>
+
+   
+    <VBox spacing="5">
+        <Label text="Precio Base (₡)"
+               style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
+        <TextField fx:id="txtPrecio"                  
+                   style="-fx-background-color: #313244;
+                          -fx-text-fill: #cdd6f4; m,mj                         
+                          -fx-border-color: #45475a;
+                          -fx-border-radius: 6; -fx-background-radius: 6;
+                          -fx-padding: 8;"/>
+    </VBox>
+
+    <Separator style="-fx-background-color: #45475a;"/>
+
+  
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button text="Cancelar"
+                onAction="#onCancelar"
+                style="-fx-background-color: #45475a;
+                       -fx-text-fill: #cdd6f4;
+                       -fx-border-radius: 6; -fx-background-radius: 6;
+                       -fx-padding: 8 18; -fx-cursor: hand;"/>
+        <Button text="Guardar"
+                onAction="#onGuardar"
+                style="-fx-background-color: #a6e3a1;
+                       -fx-text-fill: #1e1e2e; -fx-font-weight: bold;
+                       -fx-border-radius: 6; -fx-background-radius: 6;
+                       -fx-padding: 8 18; -fx-cursor: hand;"/>
+    </HBox>
+</VBox>
