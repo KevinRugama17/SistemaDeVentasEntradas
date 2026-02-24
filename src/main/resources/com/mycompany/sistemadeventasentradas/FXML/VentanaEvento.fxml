@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
 
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.mycompany.sistemadeventasentradas.Controller.VentanaEventoController"
+      spacing="18" prefWidth="360"
+      style="-fx-background-color: #1e1e2e; -fx-padding: 30;">
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="fondo" stylesheets="@../CSS/StyleBG.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25" fx:controller="com.mycompany.sistemadeventasentradas.Controller.VentanaEventoController">
     
-</AnchorPane>
+    <Label fx:id="lblTituloDialog" text="Crear Evento"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;
+                  -fx-text-fill: #cdd6f4;"/>
+
+    <Separator style="-fx-background-color: #45475a;"/>
+
+   
+    <VBox spacing="5">
+        <Label text="Nombre del Evento"
+               style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
+        <TextField fx:id="txtNombre"
+                   style="-fx-background-color: #313244;
+                          -fx-text-fill: #cdd6f4;
+                          -fx-border-color: #45475a;
+                          -fx-border-radius: 6; -fx-background-radius: 6;
+                          -fx-padding: 8;"/>
+    </VBox>
+
+    
+    <VBox spacing="5">
+        <Label text="Fecha"
+               style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
+        <TextField fx:id="txtFecha"
+                   
+                   style="-fx-background-color: #313244;
+                          -fx-text-fill: #cdd6f4;                         
+                          -fx-border-color: #45475a;
+                          -fx-border-radius: 6; -fx-background-radius: 6;
+                          -fx-padding: 8;"/>
+    </VBox>
+
+   
+    <VBox spacing="5">
+        <Label text="Precio Base (₡)"
+               style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
+        <TextField fx:id="txtPrecio"                  
+                   style="-fx-background-color: #313244;
+                          -fx-text-fill: #cdd6f4; m,mj                         
+                          -fx-border-color: #45475a;
+                          -fx-border-radius: 6; -fx-background-radius: 6;
+                          -fx-padding: 8;"/>
+    </VBox>
+
+    <Separator style="-fx-background-color: #45475a;"/>
+
+  
+    <HBox spacing="12" alignment="CENTER_RIGHT">
+        <Button text="Cancelar"
+                onAction="#onCancelar"
+                style="-fx-background-color: #45475a;
+                       -fx-text-fill: #cdd6f4;
+                       -fx-border-radius: 6; -fx-background-radius: 6;
+                       -fx-padding: 8 18; -fx-cursor: hand;"/>
+        <Button text="Guardar"
+                onAction="#onGuardar"
+                style="-fx-background-color: #a6e3a1;
+                       -fx-text-fill: #1e1e2e; -fx-font-weight: bold;
+                       -fx-border-radius: 6; -fx-background-radius: 6;
+                       -fx-padding: 8 18; -fx-cursor: hand;"/>
+    </HBox>
+</VBox>
