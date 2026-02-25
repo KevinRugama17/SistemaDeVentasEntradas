@@ -23,13 +23,10 @@ public class App extends Application {
         stage.getIcons().add(icon);
         stage.show();
     }
-    
-
     private static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/com/mycompany/sistemadeventasentradas/FXML/Login.fxml"));
         return fxmlLoader.load();
     }
-
     public static void main(String[] args) {
         launch(args);
     }

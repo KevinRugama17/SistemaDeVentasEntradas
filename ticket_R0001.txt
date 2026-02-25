@@ -2,10 +2,10 @@
 ║   ENTRADA ESTUDIANTE         ║
 ╠══════════════════════════════╣
 ║ ID Reserva : R0001            ║
-║ Cliente    : Aaron            ║
-║ ID Cliente : 504580097        ║
+║ Cliente    : Luis             ║
+║ ID Cliente : Joel             ║
 ║ Evento     : Sala estudio     ║
-║ Asiento    : A2               ║
+║ Asiento    : C5               ║
 ║ Tipo       : Estudiante       ║
 ║ Base       : ₡1500,00         ║
 ║ Descto-30% : -₡450,00         ║
