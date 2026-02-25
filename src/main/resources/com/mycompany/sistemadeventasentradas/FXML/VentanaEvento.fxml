@@ -1,73 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml"
-      spacing="18" prefWidth="360"
-      style="-fx-background-color: #1e1e2e; -fx-padding: 30;">
-
-    
-    <Label fx:id="lblTituloDialog" text="Crear Evento"
-           style="-fx-font-size: 20px; -fx-font-weight: bold;
-                  -fx-text-fill: #cdd6f4;"/>
-
-    <Separator style="-fx-background-color: #45475a;"/>
-
-   
-    <VBox spacing="5">
-        <Label text="Nombre del Evento"
-               style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
-        <TextField fx:id="txtNombre"
-                   style="-fx-background-color: #313244;
-                          -fx-text-fill: #cdd6f4;
-                          -fx-border-color: #45475a;
-                          -fx-border-radius: 6; -fx-background-radius: 6;
-                          -fx-padding: 8;"/>
-    </VBox>
+<VBox prefHeight="400.0" prefWidth="335.0" spacing="18" style="-fx-padding: 30;" styleClass="fondo-ventanas" stylesheets="@../CSS/StyleBG.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25">
 
     
-    <VBox spacing="5">
-        <Label text="Fecha"
-               style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
-        <TextField fx:id="txtFecha"
-                   
-                   style="-fx-background-color: #313244;
-                          -fx-text-fill: #cdd6f4;                         
-                          -fx-border-color: #45475a;
-                          -fx-border-radius: 6; -fx-background-radius: 6;
-                          -fx-padding: 8;"/>
-    </VBox>
+    <Label fx:id="lblTituloDialog" styleClass="label-highlight" stylesheets="@../CSS/StyleBG.css" text="Crear Evento" />
+   <Pane prefHeight="225.0" prefWidth="270.0" styleClass="bordes-pane" stylesheets="@../CSS/StyleBG.css">
+      <children>
+      
+         
+          <VBox layoutX="36.0" layoutY="14.0" spacing="5">
+              <Label text="Nombre del Evento" textFill="WHITE" />
+              <TextField fx:id="txtNombre" prefWidth="200.0" />
+          </VBox>
+      
+          
+          <VBox layoutX="36.0" layoutY="91.0" spacing="5">
+              <Label text="Fecha" textFill="WHITE" />
+              <TextField fx:id="txtFecha" prefWidth="200.0" />
+          </VBox>
+      
+         
+          <VBox layoutX="36.0" layoutY="167.0" spacing="5">
+              <Label text="Precio Base (₡)" textFill="WHITE" />
+              <TextField fx:id="txtPrecio" prefWidth="200.0" />
+          </VBox>
+      </children>
+   </Pane>
 
-   
-    <VBox spacing="5">
-        <Label text="Precio Base (₡)"
-               style="-fx-text-fill: #a6adc8; -fx-font-size: 12px;"/>
-        <TextField fx:id="txtPrecio"                  
-                   style="-fx-background-color: #313244;
-                          -fx-text-fill: #cdd6f4;                        
-                          -fx-border-color: #45475a;
-                          -fx-border-radius: 6; -fx-background-radius: 6;
-                          -fx-padding: 8;"/>
-    </VBox>
-
-    <Separator style="-fx-background-color: #45475a;"/>
-
-  
-    <HBox spacing="12" alignment="CENTER_RIGHT">
-        <Button text="Cancelar"
-                onAction="#onCancelar"
-                style="-fx-background-color: #45475a;
-                       -fx-text-fill: #cdd6f4;
-                       -fx-border-radius: 6; -fx-background-radius: 6;
-                       -fx-padding: 8 18; -fx-cursor: hand;"/>
-        <Button text="Guardar"
-                onAction="#onGuardar"
-                style="-fx-background-color: #a6e3a1;
-                       -fx-text-fill: #1e1e2e; -fx-font-weight: bold;
-                       -fx-border-radius: 6; -fx-background-radius: 6;
-                       -fx-padding: 8 18; -fx-cursor: hand;"/>
+        
+          <HBox alignment="CENTER_RIGHT" spacing="12">
+        <Button onAction="#onCancelar" styleClass="botones" stylesheets="@../CSS/StyleBG.css" text="Cancelar" />
+        <Button onAction="#onGuardar" styleClass="btn-success" stylesheets="@../CSS/StyleBG.css" text="Guardar" />
     </HBox>
 </VBox>
