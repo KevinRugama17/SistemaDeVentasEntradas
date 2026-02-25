@@ -60,3 +60,16 @@
     -fx-font-size: 12px;
 }
 
+.btn-cancel{
+    -fx-background-color: #d12929;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-padding: 7 14 7 14;
+}
+
+.btn-cancel:hover {
+    -fx-background-color:  rgba(192,57,43,0.75);
+}
