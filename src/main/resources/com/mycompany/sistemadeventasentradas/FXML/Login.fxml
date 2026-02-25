@@ -21,11 +21,11 @@
          </image>
       </ImageView>
       
-      <TextField fx:id="txtID" layoutX="197.0" layoutY="59.0" prefHeight="25.0" prefWidth="169.0" />
+      <TextField fx:id="txtID" layoutX="197.0" layoutY="59.0" prefHeight="25.0" prefWidth="169.0" promptText="admin" />
       <TextFlow fx:id="txtFlow" layoutX="197.0" layoutY="178.0" prefHeight="25.0" prefWidth="200.0" />
       <Button fx:id="btnRegistrarse" layoutX="267.0" layoutY="148.0" mnemonicParsing="false" onAction="#registrarUsuario" styleClass="botones" stylesheets="@../CSS/StyleBG.css" text="Registrarse" />
       <Button fx:id="btnIngresar" layoutX="188.0" layoutY="148.0" mnemonicParsing="false" onAction="#ingresarLogin" styleClass="botones" stylesheets="@../CSS/StyleBG.css" text="Ingresar" />
-      <PasswordField fx:id="txtPassword" layoutX="197.0" layoutY="107.0" prefHeight="25.0" prefWidth="169.0" />
+      <PasswordField fx:id="txtPassword" layoutX="197.0" layoutY="107.0" prefHeight="25.0" prefWidth="169.0" promptText="2468" />
       <Button fx:id="btnCancelar" layoutX="359.0" layoutY="148.0" mnemonicParsing="false" onAction="#cancelar" styleClass="botones" stylesheets="@../CSS/StyleBG.css" text="Cancelar" />
    </children>
 </AnchorPane>
