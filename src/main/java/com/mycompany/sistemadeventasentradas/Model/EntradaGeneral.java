@@ -26,17 +26,17 @@ public  class EntradaGeneral extends Entrada{
     
     @Override
     public String generarTicket(){
-        return "╔══════════════════════════════╗\n"
-             + "║     ENTRADA GENERAL          ║\n"
-             + "╠══════════════════════════════╣\n"
+        return "╔═══════════════════════════════════╗\n"
+             + "║     ENTRADA GENERAL         ║\n"
+             + "╠═══════════════════════════════════╣\n"
              + "║ ID Reserva : " + rellenarTicket(idReserva, 16) + " ║\n"
              + "║ Cliente    : " + rellenarTicket(nombreCliente, 16) + " ║\n"
              + "║ ID Cliente : " + rellenarTicket(idCliente, 16) + " ║\n"
              + "║ Evento     : " + rellenarTicket(nombreEvento, 16) + " ║\n"
              + "║ Asiento    : " + rellenarTicket((char)('A'+fila)+""+(columna+1), 16) + " ║\n"
              + "║ Tipo       : " + rellenarTicket("General", 16) + " ║\n"
-             + "║ Precio     : " + rellenarTicket("₡"+String.format("%.2f",calcularPrecio()), 16) + " ║\n"
-             + "╚══════════════════════════════╝";
+             + "║ Precio     : " + rellenarTicket(String.format("%.2f",calcularPrecio()), 16) + " ║\n"
+             + "╚═══════════════════════════════════╝";
    
     }
         private String rellenarTicket(String s, int n) {

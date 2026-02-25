@@ -1,5 +1,5 @@
-CineAvengers,0,0,false
-CineAvengers,0,1,false
+CineAvengers,0,0,true
+CineAvengers,0,1,true
 CineAvengers,0,2,false
 CineAvengers,0,3,false
 CineAvengers,0,4,false
