@@ -1,11 +1,11 @@
 package com.mycompany.sistemadeventasentradas.Controller;
 import com.mycompany.sistemadeventasentradas.Model.Entrada;
 import com.mycompany.sistemadeventasentradas.Model.Evento;
+import com.mycompany.sistemadeventasentradas.Model.EstadoAsiento;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -17,32 +17,30 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-
 public class MainViewController implements Initializable {
-    @FXML private TabPane          tabPane;
-    @FXML private Tab              tabMapa;
-    @FXML private Tab              tabAdmin;
-
+    @FXML private TabPane tabPane;
+    @FXML private Tab tabMapa;
+    @FXML private Tab tabAdmin;
+    
     @FXML private ComboBox<String> comboEventoGlobal;
-    @FXML private Label            lblEventoNombre;
-    @FXML private Label            lblEventoFecha;
-    @FXML private Label            lblEventoPrecio;
-    @FXML private Label            lblRecaudado;
-    @FXML private Label            lblStatus;
-
-    @FXML private GridPane         gridAsientos;
+    @FXML private Label lblEventoNombre;
+    @FXML private Label lblEventoFecha;
+    @FXML private Label lblEventoPrecio;
+    @FXML private Label lblRecaudado;
+    @FXML private Label lblStatus;
+    
+    @FXML private GridPane gridAsientos;
     @FXML private ListView<String> listEventos;
-    @FXML private TextArea         areaReporte;
+    @FXML private TextArea areaReporte;
     
     private final ControladorPrincipal controller;
     private boolean esAdmin = false;
-    private Evento evento; // Esta variable es una prueba.
     private Button[][] botonesAsientos;
     
     public MainViewController(ControladorPrincipal controller) {
         this.controller = controller;
     }
-//     * Debe llamarse justo después de loader.load() y antes de stage.show().
+//     Debe llamarse justo después de loader.load() y antes de stage.show().
     public void setEsAdmin(boolean esAdmin) {
         this.esAdmin = esAdmin;
         aplicarRol();
@@ -61,30 +59,6 @@ public class MainViewController implements Initializable {
             tabPane.getTabs().remove(tabAdmin);
         }
     }
-
-//    private void construirMapaAsientos() {
-//        for (int col = 0; col < Evento.COLUMNAS; col++) {
-//            Label lbl = new Label(String.valueOf(col + 1));
-//            lbl.setAlignment(Pos.CENTER);
-//            lbl.setPrefSize(54, 24);
-//            lbl.setStyle("-fx-text-fill: rgba(255,255,255,0.5); -fx-font-size: 11px;");
-//            gridAsientos.add(lbl, col + 1, 0);
-//        }
-//        
-//        for (int fila = 0; fila < Evento.FILAS; fila++) {
-//            Label lblFila = new Label(String.valueOf((char) ('A' + fila)));
-//            lblFila.setAlignment(Pos.CENTER);
-//            lblFila.setPrefSize(28, 48);
-//            lblFila.setStyle("-fx-text-fill: rgba(255,255,255,0.5); -fx-font-size: 11px;");
-//            gridAsientos.add(lblFila, 0, fila + 1);
-//
-//            for (int col = 0; col < Evento.COLUMNAS; col++) {
-//                Button btn = crearBotonAsiento(fila, col);
-//                botonesAsientos[fila][col] = btn;
-//                gridAsientos.add(btn, col + 1, fila + 1);
-//            }
-//        }
-//    }
     private void construirMapaAsientos(){
         for (int i = 0; i < Evento.COLUMNAS; i++) {
             Label lbl = new Label(String.valueOf(i + 1));
@@ -105,52 +79,41 @@ public class MainViewController implements Initializable {
     }
     private Button crearBotonAsiento(int fila, int col){
         Button btn = new Button();
-        btn.setPrefSize(54,48);
-        aplicarEstiloAsiento(btn, "libre"); // Antes era "libre", pero lo cambie
+//        btn.setPrefSize(54,48);
+        aplicarEstiloAsiento(btn, EstadoAsiento.LIBRE); // Antes era "libre", pero lo cambie
         btn.setTooltip(new Tooltip("Fila" + (char) ('A' + fila) + "- Asiento "+(col + 1)));
         btn.setOnAction(e -> onAsientoClick(fila, col));
         return btn;
     }
-    private void aplicarEstiloAsiento(Button btn, String estado) {
-        switch (estado) {
-            case "libre":
-            case "ocupado":
-            case "disabled":
-            default:
-                btn.setStyle(
-                    "" +
-                    "-fx-background-radius: 6;" +
-                    "" +
-                    ""
-                );
-                btn.setText("");
-                break;
+    private void aplicarEstiloAsiento(Button btn, EstadoAsiento estado){
+        btn.getStyleClass().removeAll("asiento-libre","asiento-ocupado","asiento-disabled");
+         switch(estado){
+             case LIBRE:
+                 btn.getStyleClass().add("asiento-libre");
+                 btn.setText("");
+                 btn.setDisable(false);
+                 break;
+             case OCUPADO:
+                 btn.getStyleClass().add("asiento-ocupado");
+                 btn.setText(" X ");
+                 btn.setDisable(true);// Para que un cliente no pueda tomar un asiento ya tomado
+                 break;
+             case DISABLED:
+                 btn.getStyleClass().add("asiento-disabled");
+                 btn.setText("");
+                 btn.setDisable(true); // Se podria cambiar a false
+                 break;
+         }
+    }
+    public void refrescarMapa(){
+        for (int fila = 0; fila < Evento.FILAS; fila++) {
+            for (int col = 0; col < Evento.COLUMNAS; col++) {
+                EstadoAsiento estado = controller.getEventoActual() == null ? EstadoAsiento.DISABLED: controller.getEventoActual().getEstadoAsiento(fila, col);
+                Button btn = botonesAsientos[fila][col];
+                aplicarEstiloAsiento(btn, estado);
+            }
         }
     }
-//    public enum EstadoAsiento{
-//        LIBRE, OCUPADO, DISABLED
-//    }
-//    private void aplicarEstiloAsiento(Button btn, EstadoAsiento estado){
-//        btn.getStyleClass().removeAll("asiento-libre","asiento-ocupado","asiento-disabled");
-//         switch(estado){
-//             case LIBRE:
-//                 btn.getStyleClass().add("asiento-libre");
-//                 btn.setText("");
-//                 btn.setDisable(false);
-//                 break;
-//             case OCUPADO:
-//                 btn.getStyleClass().add("asiento-ocupado");
-//                 btn.setText(" X ");
-//                 btn.setDisable(false);
-//                 break;
-//             case DISABLED:
-//                 btn.getStyleClass().add("asiento-disabled");
-//                 btn.setText("");
-//                 btn.setDisable(false);
-//                 break;
-//         }
-//    }
-
     private void onAsientoClick(int fila, int col) {
         Evento evento = controller.getEventoActual();
 
@@ -167,13 +130,11 @@ public class MainViewController implements Initializable {
     private void abrirDialogoCompra(int fila, int col) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mycompany/sistemadeventasentradas/FXML/VentanaCompra.fxml"));
-
             VentanaCompraController dialogCtrl = new VentanaCompraController(controller, fila, col);
             loader.setController(dialogCtrl);
-
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Comprar Entrada — " + (char) ('A' + fila) + (col + 1));
+            stage.setTitle(String.format("Comprar Entrada - %c%d", ('A' +fila), (col + 1)));
             stage.setScene(new Scene(loader.load()));
             stage.setResizable(false);
             stage.showAndWait();
@@ -192,10 +153,10 @@ public class MainViewController implements Initializable {
     private void onCerrarSesion() {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Cerrar Sesion");
-        confirm.setHeaderText("Desea cerrar secion?");
+        confirm.setHeaderText("Desea cerrar sesion?");
         confirm.setContentText("Se guardaran los datos antes de salir");
         Optional<ButtonType> result = confirm.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
+        if (result.isPresent() && result.get() == ButtonType.OK){
             controller.guardarTodo();
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mycompany/sistemadeventasentradas/FXML/Login.fxml"));
@@ -214,36 +175,38 @@ public class MainViewController implements Initializable {
     }
     @FXML
     private void onCargarEvento() {
-        int idx = comboEventoGlobal.getSelectionModel().getSelectedIndex();
-        if (idx < 0) {
+        int indice = comboEventoGlobal.getSelectionModel().getSelectedIndex();
+        if (indice < 0) {
             mostrarAlerta(Alert.AlertType.WARNING, "Sin seleccion","Seleccione un evento del listado.");
             return;
         }
-        controller.seleccionarEvento(idx);
-        listEventos.getSelectionModel().select(idx);
+        controller.seleccionarEvento(indice);
+        listEventos.getSelectionModel().select(indice);
         refrescarMapa();
         refrescarInfoEvento();
-        setStatus("Evento cargado: " + controller.getEventoActual().getNombre(), false);
+//      Agregue el siguiente bloque por un posible nullPointerException
+        Evento eventoActual = controller.getEventoActual();
+        if(eventoActual != null){
+        setStatus("Evento cargado: "+eventoActual.getNombre(), false);
+        }
     }
-
-//    Acciones de administracion
     @FXML
     private void onCrearEvento() {
         abrirDialogoEvento(null, -1);
     }
     @FXML
     private void onEditarEvento() {
-        int idx = listEventos.getSelectionModel().getSelectedIndex();
-        if (idx < 0) {
+        int indice = listEventos.getSelectionModel().getSelectedIndex();
+        if (indice < 0) {
             mostrarAlerta(Alert.AlertType.WARNING, "Sin seleccion","Seleccione un evento de la lista para editar.");
             return;
         }
-        abrirDialogoEvento(controller.getEventos().get(idx), idx);
+        abrirDialogoEvento(controller.getEventos().get(indice), indice);
     }
     @FXML
     private void onEliminarEvento() {
-        int idx = listEventos.getSelectionModel().getSelectedIndex();
-        if (idx < 0) {
+        int indice = listEventos.getSelectionModel().getSelectedIndex();
+        if (indice < 0) {
             mostrarAlerta(Alert.AlertType.WARNING, "Sin seleccion","Seleccione un vento de la lista. ");
             return;
         }
@@ -254,7 +217,7 @@ public class MainViewController implements Initializable {
         Optional<ButtonType> result = confirm.showAndWait();
 
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            controller.eliminarEvento(idx);
+            controller.eliminarEvento(indice);
             actualizarCombosYLista();
             refrescarMapa();
             refrescarInfoEvento();
@@ -285,36 +248,31 @@ public class MainViewController implements Initializable {
     private void onBuscarReserva() {
         ChoiceDialog<String> choice = new ChoiceDialog<>("Por ID de Cliente", "Por ID de Cliente", "Por ID de Reserva");
         choice.setTitle("Buscar Reserva");
-        choice.setHeaderText("¿Cómo desea buscar?");
+        choice.setHeaderText("¿Como desea buscar?");
         Optional<String> criterio = choice.showAndWait();
         if (criterio.isEmpty()) return;
-
+        
         TextInputDialog input = new TextInputDialog();
         input.setTitle("Buscar Reserva");
-        input.setHeaderText(criterio.get().equals("Por ID de Cliente")
-            ? "Ingrese el ID del cliente:"
-            : "Ingrese el ID de la reserva:");
+        input.setHeaderText(criterio.get().equals("Por ID de Cliente") ? "Ingrese el ID del cliente:" :"Ingrese el ID de la reserva:");
         input.setContentText("ID:");
+        
         Optional<String> valor = input.showAndWait();
-
         if (valor.isEmpty() || valor.get().isBlank()) return;
-
+        
         Entrada resultado = criterio.get().equals("Por ID de Cliente")
             ? controller.buscarPorIdCliente(valor.get())
             : controller.buscarPorIdReserva(valor.get());
-
         if (resultado == null) {
             mostrarAlerta(Alert.AlertType.INFORMATION, "Sin resultados","No se encontró ninguna reserva con ese ID.");
         } else {
             mostrarTicket("Reserva encontrada", resultado.generarTicket());
         }
     }
-
     @FXML
     private void onGenerarReporte() {
         areaReporte.setText(controller.getReporteEvento());
     }
-
     private void abrirDialogoEvento(Evento eventoEditar, int indice) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mycompany/sistemadeventasentradas/FXML/VentanaEvento.fxml"));
@@ -322,7 +280,7 @@ public class MainViewController implements Initializable {
             loader.setController(dialogCtrl);
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle(eventoEditar == null ? "Crear Evento" : "Editar Evento");
+            stage.setTitle(eventoEditar == null ? "Crear evento" : "Editar evento");
             stage.setScene(new Scene(loader.load()));
             stage.setResizable(false);
             stage.showAndWait();
@@ -333,80 +291,46 @@ public class MainViewController implements Initializable {
                 refrescarInfoEvento();
                 setStatus("Evento guardado correctamente.", false);
             }
-
         } catch (IOException e) {
-            mostrarAlerta(Alert.AlertType.ERROR, "Error","No se pudo abrir el diálogo de evento.");
+            mostrarAlerta(Alert.AlertType.ERROR, "Error", "No se pudo abrir el dialogo de evento. ");
             e.printStackTrace();
         }
     }
-
-    public void refrescarMapa() {
-        Evento evento = controller.getEventoActual();
-        for (int fila = 0; fila < Evento.FILAS; fila++) {
-            for (int col = 0; col < Evento.COLUMNAS; col++) {
-                Button btn = botonesAsientos[fila][col];
-                if (evento == null) {
-                    aplicarEstiloAsiento(btn, "disabled");
-                } else if (evento.isAsientoLibre(fila, col)) {
-                    aplicarEstiloAsiento(btn, "libre");
-                } else {
-                    aplicarEstiloAsiento(btn, "ocupado");
-                }
-            }
-        }
-    }
-//    El metodo de abajo es una posible refactorizacion del de arriba
-//    public void refrescarMapa(){
-//        for (int fila = 0; fila < Evento.FILAS; fila++) {
-//            for (int col = 0; col < Evento.COLUMNAS; col++) {
-//                EstadoAsiento estado = evento.getEstadoAsiento(fila, col);
-//                Button btn = botonesAsientos[fila][col];
-//                aplicarEstiloAsiento(btn, estado);
-//            }
-//        }
-//    }
-
     public void actualizarCombosYLista() {
         comboEventoGlobal.getItems().clear();
         listEventos.getItems().clear();
 
         for (Evento e : controller.getEventos()) {
-            String texto = e.getNombre() + "  (" + e.getFecha() + ")";
+            String texto = String.format("%s (%s)", e.getNombre(), e.getFecha());
             comboEventoGlobal.getItems().add(texto);
             listEventos.getItems().add(texto);
         }
-
         if (controller.getEventoActual() != null) {
-            int idx = controller.getEventos().indexOf(controller.getEventoActual());
-            comboEventoGlobal.getSelectionModel().select(idx);
-            listEventos.getSelectionModel().select(idx);
+            int indice = controller.getEventos().indexOf(controller.getEventoActual());
+            comboEventoGlobal.getSelectionModel().select(indice);
+            listEventos.getSelectionModel().select(indice);
         }
         refrescarMapa();
     }
-
     private void refrescarInfoEvento() {
-        Evento e = controller.getEventoActual();
-        if (e != null) {
-            lblEventoNombre.setText(e.getNombre());
-            lblEventoFecha.setText(e.getFecha());
-            lblEventoPrecio.setText(String.format("%.2f", e.getPrecioBase()));
-            lblRecaudado.setText("Recaudado: " + String.format("%.2f", controller.getTotalRecaudado()));
+        Evento eventoActual = controller.getEventoActual();
+        if (eventoActual != null) {
+            lblEventoNombre.setText(eventoActual.getNombre());
+            lblEventoFecha.setText(eventoActual.getFecha());
+            lblEventoPrecio.setText(String.format("%.2f", eventoActual.getPrecioBase()));
+            lblRecaudado.setText(String.format("Recaudado: %.2f", controller.getTotalRecaudado()));
         } else {
-            lblEventoNombre.setText("—");
-            lblEventoFecha.setText("—");
-            lblEventoPrecio.setText("—");
+            lblEventoNombre.setText("-");
+            lblEventoFecha.setText("-");
+            lblEventoPrecio.setText("");
             lblRecaudado.setText("");
         }
     }
-
     private void setStatus(String mensaje, boolean exito) {
         lblStatus.setText(mensaje);
-        lblStatus.setStyle(exito
-            ? "-fx-text-fill: #34c759; -fx-font-size: 11px; -fx-padding: 4 10 4 10; -fx-background-color: rgba(0,0,0,0.2); -fx-background-radius: 4;"
-            : "-fx-text-fill: rgba(255,255,255,0.6); -fx-font-size: 11px; -fx-padding: 4 10 4 10; -fx-background-color: rgba(0,0,0,0.2); -fx-background-radius: 4;"
-        );
+        lblStatus.getStyleClass().removeAll("status-exito", "status-normal");
+        lblStatus.getStyleClass().add(exito ? "status-exito": "status-normal");
     }
-
     private void mostrarAlerta(Alert.AlertType tipo, String titulo, String contenido) {
         Alert alert = new Alert(tipo);
         alert.setTitle(titulo);
@@ -414,12 +338,10 @@ public class MainViewController implements Initializable {
         alert.setContentText(contenido);
         alert.showAndWait();
     }
-
     private void mostrarTicket(String titulo, String contenido) {
         TextArea area = new TextArea(contenido);
         area.setEditable(false);
-        area.setStyle("-fx-font-family: 'Courier New'; -fx-font-size: 13;");
-        area.setPrefSize(340, 280);
+        area.getStyleClass().add("ticket-area");
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(titulo);
         alert.setHeaderText(null);

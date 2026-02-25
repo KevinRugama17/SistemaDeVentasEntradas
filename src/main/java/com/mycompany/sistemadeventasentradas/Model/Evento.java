@@ -1,10 +1,9 @@
 package com.mycompany.sistemadeventasentradas.Model;
-
+import com.mycompany.sistemadeventasentradas.Model.EstadoAsiento;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Evento {
-    
     public static final int FILAS    = 10;
     public static final int COLUMNAS = 10;
 
@@ -22,7 +21,9 @@ public class Evento {
         this.entradasVendidas = new ArrayList<>();
     }
 
-    
+    public EstadoAsiento getEstadoAsiento(int fila, int col){
+        return isAsientoLibre(fila, col) ? EstadoAsiento.LIBRE : EstadoAsiento.OCUPADO;
+    }
     public boolean isAsientoLibre(int fila, int col) 
     { return !asientos[fila][col]; }
     
