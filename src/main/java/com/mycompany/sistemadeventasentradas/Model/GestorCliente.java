@@ -46,7 +46,7 @@ public class GestorCliente {
             }
         }
         listaUsuarios.add(new Cliente(id, password));
-        guardarUsuarios(); // Persistir inmediatamente
+        guardarUsuarios(); // Persiste inmediatamente
         return true;
     }
 

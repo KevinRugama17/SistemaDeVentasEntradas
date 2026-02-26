@@ -75,7 +75,7 @@
                     </VBox>
                 </ScrollPane>
             </Tab>
-            <Tab fx:id="tabAdmin" text="⚙  Administración">
+            <Tab fx:id="tabAdmin" text="  Administración">
                 <SplitPane dividerPositions="0.38" style="-fx-background-color: transparent; -fx-padding: 16;">
                     <VBox spacing="12" style="-fx-padding: 0 8 0 0;">
                         <Label styleClass="label-highlight" stylesheets="@../CSS/StyleBG.css" text="Gestión de Eventos" />

@@ -46,18 +46,18 @@ public class LoginController implements Initializable{
             }
             if (gestor.validarLogin(id, password)) {
                 boolean esAdmin = id.equals("admin");
-                // Crear controlador de lógica
+                // Crea controlador de lógica
                 ControladorPrincipal controladorPrincipal = new ControladorPrincipal();
 
                 // Cargar MainView con su controlador
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mycompany/sistemadeventasentradas/FXML/MainView.fxml"));
-                MainViewController mvc = new MainViewController(controladorPrincipal);
-                loader.setController(mvc);
+                MainViewController mainviewc = new MainViewController(controladorPrincipal);
+                loader.setController(mainviewc);
 
                 Parent parent = loader.load();
 
                 // Aplicar rol DESPUÉS de load() y ANTES de show()
-                mvc.setEsAdmin(esAdmin);
+                mainviewc.setEsAdmin(esAdmin);
 
                 Stage stage = new Stage();
                 stage.setScene(new Scene(parent));

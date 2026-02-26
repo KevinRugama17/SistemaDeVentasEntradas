@@ -1,5 +1,10 @@
-package com.mycompany.sistemadeventasentradas.Model;
+package com.mycompany.sistemadeventasentradas.Utilities;
 
+import com.mycompany.sistemadeventasentradas.Model.Entrada;
+import com.mycompany.sistemadeventasentradas.Model.EntradaEstudiante;
+import com.mycompany.sistemadeventasentradas.Model.EntradaGeneral;
+import com.mycompany.sistemadeventasentradas.Model.EntradaVIP;
+import com.mycompany.sistemadeventasentradas.Model.Evento;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -15,6 +20,7 @@ public class GestorPersistencia {
     private static final String ARCHIVO_EVENTOS  = "eventos.txt";
     private static final String ARCHIVO_ASIENTOS = "asientos.txt";
     private static final String ARCHIVO_VENTAS   = "ventas.txt";
+    
     //  GUARDAR
     public static void guardarEventos(List<Evento> eventos) {
         try (PrintWriter pw = new PrintWriter(new FileWriter(ARCHIVO_EVENTOS))) {
@@ -71,12 +77,13 @@ public class GestorPersistencia {
         }
     }
 
-    /** Llama a los tres métodos de guardado en orden */
+    // Llama a los tres métodos de guardado en orden  
     public static void guardarTodo(List<Evento> eventos) {
         guardarEventos(eventos);
         guardarAsientos(eventos);
         guardarVentas(eventos);
     }
+    
     //  CARGAR
     public static List<Evento> cargarEventos() {
         List<Evento> lista = new ArrayList<>();

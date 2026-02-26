@@ -15,11 +15,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-/**
- * FXML Controller class
- *
- * @author kevin
- */
 public class VentanaCompraController implements Initializable {
 
     @FXML private Label     lblAsiento;
@@ -76,25 +71,6 @@ public class VentanaCompraController implements Initializable {
     }
     lblPrecioFinal.setText("₡" + String.format("%.2f", precio));
    
-       //antes 
-        
-   /* if (controller.getEventoActual() == null) return;
-    double base = controller.getEventoActual().getPrecioBase();
-    String tipo = comboTipo.getValue();
-    
-    double precio;
-    switch (tipo) {
-        case "VIP":
-            precio = base * 1.50;
-            break;
-        case "Estudiante":
-            precio = base * 0.70;
-            break;
-        default:
-            precio = base;
-            break;
-    }
-    lblPrecioFinal.setText("₡" + String.format("%.2f", precio));*/
 }
    
 

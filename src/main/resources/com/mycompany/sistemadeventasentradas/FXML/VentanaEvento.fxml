@@ -8,8 +8,6 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox prefHeight="400.0" prefWidth="335.0" spacing="18" style="-fx-padding: 30;" styleClass="fondo-ventanas" stylesheets="@../CSS/StyleBG.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/25">
-
-    
     <Label fx:id="lblTituloDialog" styleClass="label-highlight" stylesheets="@../CSS/StyleBG.css" text="Crear Evento" />
    <Pane prefHeight="225.0" prefWidth="270.0" styleClass="bordes-pane" stylesheets="@../CSS/StyleBG.css">
       <children>

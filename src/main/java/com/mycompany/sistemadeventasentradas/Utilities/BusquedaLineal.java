@@ -1,5 +1,6 @@
-package com.mycompany.sistemadeventasentradas.Model;
+package com.mycompany.sistemadeventasentradas.Utilities;
 
+import com.mycompany.sistemadeventasentradas.Model.Entrada;
 import java.util.ArrayList;
 import java.util.List;
 

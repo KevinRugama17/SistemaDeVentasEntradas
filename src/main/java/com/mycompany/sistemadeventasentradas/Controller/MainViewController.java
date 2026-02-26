@@ -79,8 +79,7 @@ public class MainViewController implements Initializable {
     }
     private Button crearBotonAsiento(int fila, int col){
         Button btn = new Button();
-//        btn.setPrefSize(54,48);
-        aplicarEstiloAsiento(btn, EstadoAsiento.LIBRE); // Antes era "libre", pero lo cambie
+        aplicarEstiloAsiento(btn, EstadoAsiento.LIBRE); 
         btn.setTooltip(new Tooltip("Fila" + (char) ('A' + fila) + "- Asiento "+(col + 1)));
         btn.setOnAction(e -> onAsientoClick(fila, col));
         return btn;
@@ -101,7 +100,7 @@ public class MainViewController implements Initializable {
              case DISABLED:
                  btn.getStyleClass().add("asiento-disabled");
                  btn.setText("");
-                 btn.setDisable(true); // Se podria cambiar a false
+                 btn.setDisable(true); 
                  break;
          }
     }
@@ -133,7 +132,6 @@ public class MainViewController implements Initializable {
             VentanaCompraController dialogCtrl = new VentanaCompraController(controller, fila, col);
             loader.setController(dialogCtrl);
             Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle(String.format("Comprar Entrada - %c%d", ('A' +fila), (col + 1)));
             stage.setScene(new Scene(loader.load()));
             stage.setResizable(false);
