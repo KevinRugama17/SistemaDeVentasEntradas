@@ -4,6 +4,8 @@
  */
 package com.mycompany.sistemadeventasentradas.Controller;
 
+import com.mycompany.sistemadeventasentradas.Utilities.BusquedaLineal;
+import com.mycompany.sistemadeventasentradas.Utilities.GestorPersistencia;
 import com.mycompany.sistemadeventasentradas.Model.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ public class ControladorPrincipal {
     }
 
    
-    //  GESTIÓN DE EVENTOS
+    //Gestiona la parte de eventos
 
 
     public void crearEvento(String nombre, String fecha, double precioBase) {
@@ -58,7 +60,7 @@ public class ControladorPrincipal {
     public Evento getEventoActual()      { return eventoActual; }
 
    
-    //  VENTA DE ENTRADAS
+    //  Logica para la venta de entradas
 
     public String comprarEntrada(String nombreCliente, String idCliente,
                              int fila, int col, String tipoEntrada) {

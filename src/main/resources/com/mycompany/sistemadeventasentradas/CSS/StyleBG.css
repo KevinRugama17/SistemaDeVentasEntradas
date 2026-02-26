@@ -1,12 +1,8 @@
-
-.fondo {
-    
+.fondo {   
     -fx-background-color:linear-gradient(to bottom right,#141E30,#243B55 );
    
 }
 .bordes-pane{
-    
-  
     -fx-padding: 20px;
     -fx-border-color: #e0e0e0;
     -fx-border-width: 1px;
@@ -15,7 +11,6 @@
 }
 
 .fondo-ventanas{
- 
     -fx-background-color: radial-gradient(center 50% 50%, radius 50%, #2a4d89, #141E30);
 }
 .botones{

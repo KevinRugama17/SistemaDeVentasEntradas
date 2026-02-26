@@ -1,10 +1,5 @@
-
 package com.mycompany.sistemadeventasentradas.Model;
 
-/**
- *
- * @author kevin
- */
 public abstract class Entrada implements IVendible{
   
     protected String nombreCliente;

@@ -1,5 +1,4 @@
 package com.mycompany.sistemadeventasentradas.Model;
-import com.mycompany.sistemadeventasentradas.Model.EstadoAsiento;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.sistemadeventasentradas.Model;
 
-/**
- *
- * @author kevin
- */
+
 public class EntradaVIP extends Entrada{
     
     public EntradaVIP(String nombreCliente, String idCliente, String idReserva, String nombreEvento, int fila, int columna, double precioBase) {
@@ -30,7 +23,7 @@ public class EntradaVIP extends Entrada{
      @Override
     public String generarTicket() {
         return "╔══════════════════════════════╗\n"
-             + "║   ★  ENTRADA VIP  ★          ║\n"
+             + "║         ENTRADA VIP          ║\n"
              + "╠══════════════════════════════╣\n"
              + "║ ID Reserva : " + rellenarTicket(idReserva, 16) + " ║\n"
              + "║ Cliente    : " + rellenarTicket(nombreCliente, 16) + " ║\n"

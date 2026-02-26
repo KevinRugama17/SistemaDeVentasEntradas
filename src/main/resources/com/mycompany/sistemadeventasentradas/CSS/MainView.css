@@ -52,20 +52,7 @@
     -fx-background-radius: 6;
 }
 
-/*1. Variables generales
-.root {-fx-font-family: "Segoe UI";}
-   2. Contenedores
-.fondo {-fx-background-color: #1e1e1e;}
-   3. Componentes base
-.button {-fx-background-radius: 6;}
-   4. Componentes específicos
-.asiento-libre { }
-.asiento-ocupado { }
-.asiento-disabled { }
-   5. Estados especiales
-.status-normal { }*/
 .fondo {
-    
     -fx-background-color:linear-gradient(to bottom right,#141E30,#243B55 );
    
 }

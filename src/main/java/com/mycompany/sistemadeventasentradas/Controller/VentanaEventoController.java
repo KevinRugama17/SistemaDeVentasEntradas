@@ -35,7 +35,7 @@ public class VentanaEventoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         if (eventoEditar != null) {
-            // Modo edición: pre-llenar campos
+            // Pre-llena los campos
             lblTituloDialog.setText("Editar Evento");
             txtNombre.setText(eventoEditar.getNombre());
             txtFecha.setText(eventoEditar.getFecha());
